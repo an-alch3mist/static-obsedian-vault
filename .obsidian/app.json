@@ -1,0 +1,15 @@
+{
+  "promptDelete": false,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "0-Index",
+  "attachmentFolderPath": "ad-attachment",
+  "alwaysUpdateLinks": true,
+  "spellcheck": false,
+  "pdfExportSettings": {
+    "includeName": true,
+    "pageSize": "A3",
+    "landscape": false,
+    "margin": "1",
+    "downscalePercent": 100
+  }
+}

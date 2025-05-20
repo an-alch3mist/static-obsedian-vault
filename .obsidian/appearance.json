@@ -1,0 +1,12 @@
+{
+  "theme": "obsidian",
+  "textFontFamily": "Consolas",
+  "interfaceFontFamily": "Consolas",
+  "cssTheme": "",
+  "baseFontSizeAction": true,
+  "baseFontSize": 13,
+  "enabledCssSnippets": [
+    "custom-style"
+  ],
+  "accentColor": "#a24444"
+}
