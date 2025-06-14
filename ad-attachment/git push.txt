@@ -1,0 +1,14 @@
+navigate inside folder containing index.html
+
+for the first time:
+	git init
+	git remote add origin https://github.com/user/editor.git
+	git branch -M main
+	git add .
+	git commit -m "Initial commit: Add index.html"
+	git push -u origin main
+
+future update:
+	git add .
+	git commit -m "Your commit message here"
+	git push
