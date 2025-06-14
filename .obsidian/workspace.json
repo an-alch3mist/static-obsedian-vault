@@ -36,17 +36,21 @@
             }
           },
           {
-            "id": "580e3a7add41ba27",
+            "id": "83bf2a2c91985b14",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "2-Guide/How To Integrate Ink To Unity.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "How To Integrate Ink To Unity"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -117,7 +121,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 424.5086555480957
+    "width": 200
   },
   "right": {
     "id": "5fbe49f137a42625",
@@ -205,20 +209,28 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-tts:Text to Speech": false
     }
   },
-  "active": "f87ade77c3203ceb",
+  "active": "83bf2a2c91985b14",
   "lastOpenFiles": [
-    "1-Ref/Node System/Node Network System Store Type.md",
-    "README.md",
-    "1-Ref/Node System/Topological Sorting for Each Cluster.md",
+    "1-Ref/Decision Making/Step-by-Step Guide .ink and Unity for a Papers, Please-Inspired Game.md",
+    "2-Guide/How To Integrate Ink To Unity.md",
+    "1-Ref/Decision Making/Citizen Assembly Gdd.md",
+    "1-Ref/Decision Making/Decision Making Similar To Papers please.md",
+    "2-Guide/How to use Discord Webhook.md",
+    "1-Ref/Decision Making",
     "1-Ref/Node System/Node.moveQ().md",
+    "2-Guide",
+    "1-Ref/Untitled.md",
+    "1-Ref/Node System/Topological Sorting for Each Cluster.md",
+    "1-Ref/Node System/Node Network System Store Type.md",
+    "Untitled.canvas",
+    "README.md",
     "1-Ref/Node System/Node System Topological Ordering + Cluster.md",
     "1-Ref/Node System/Node.moveQ().html",
     "1-Ref/Node System",
     "1-Ref/performance/Performance In General(List, Q, Hashset, MAP).md",
-    "1-Ref/Untitled",
     "0-Index/Factory Automation.md",
     "1-Ref/performance",
     "1-Ref/Shapez 2 Devlog 027 (Reddit).md",
@@ -229,7 +241,6 @@
     "0-Index/2025-05-18.md",
     "ad-attachment/Pasted image 20250518135333.png",
     "Untitled 1.canvas",
-    "Untitled.canvas",
     "Welcome.md",
     "1-Ref",
     "ad-attachment",

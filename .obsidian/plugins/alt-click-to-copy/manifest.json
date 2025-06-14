@@ -1,0 +1,10 @@
+{
+	"id": "alt-click-to-copy",
+	"name": "Alt-Click to Copy",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Alt-click to copy code!",
+	"author": "Veer Sheth",
+	"authorUrl": "https://veersheth.in",
+	"isDesktopOnly": false
+}

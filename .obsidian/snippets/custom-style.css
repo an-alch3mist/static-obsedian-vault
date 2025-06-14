@@ -1,5 +1,7 @@
+/* Keep your existing image-centering rules */
 img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
+
