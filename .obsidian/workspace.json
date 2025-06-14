@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2-Guide/How To Git Push Existing File To GitHub.md",
-                "mode": "preview",
+                "file": "2-Guide/How To .Ink Dialogue Scripting Language.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "How To Git Push Existing File To GitHub"
+              "title": "How To .Ink Dialogue Scripting Language"
             }
           }
         ],
@@ -214,9 +214,11 @@
   },
   "active": "83bf2a2c91985b14",
   "lastOpenFiles": [
+    "2-Guide/How To .Ink Dialogue Scripting.md",
+    "2-Guide/How To .Ink Dialogue Scripting Language.md",
+    "2-Guide/How To Git Push Existing File To GitHub.md",
     "ad-attachment/git push.txt",
     "2-Guide/How To Integrate Ink To Unity.md",
-    "2-Guide/How To Git Push Existing File To GitHub.md",
     "1-Ref/Decision Making/Step-by-Step Guide .ink and Unity for a Papers, Please-Inspired Game.md",
     "1-Ref/Decision Making/Citizen Assembly Gdd.md",
     "1-Ref/Decision Making/Decision Making Similar To Papers please.md",

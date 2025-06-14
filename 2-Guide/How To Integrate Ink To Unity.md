@@ -203,7 +203,7 @@ Note that the content of a tag can contain any inline **ink**, such as shuffles,
 
 ## Jumping to a particular "scene"
 
-Top level named sections in **ink** are called knots (see [the writing tutorial](WritingWithInk.md)). You can tell the runtime engine to jump to a particular named knot:
+Top level named sections in **ink** are called knots (see [the writing tutorial](How%20To%20.Ink%20Dialogue%20Scripting%20Language.md)). You can tell the runtime engine to jump to a particular named knot:
 
 ```csharp
 _inkStory.ChoosePathString("myKnotName");
