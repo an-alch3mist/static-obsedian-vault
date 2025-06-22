@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2-Guide/How To JavaScript-like String Extensions for C.md",
+                "file": "2-Guide/How To JavaScript-like String Extensions for Csharp.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "How To JavaScript-like String Extensions for C"
+              "title": "How To JavaScript-like String Extensions for Csharp"
             }
           }
         ],
@@ -215,7 +215,7 @@
   "active": "83bf2a2c91985b14",
   "lastOpenFiles": [
     "1-Ref/Decision Making/Decision Making Similar To Papers please.md",
-    "2-Guide/How To JavaScript-like String Extensions for C.md",
+    "2-Guide/How To JavaScript-like String Extensions for Csharp.md",
     "1-Ref/Decision Making/Citizen Assembly Gdd.md",
     "2-Guide/How To .Ink Dialogue Scripting Language.md",
     "2-Guide/How To .Ink Dialogue Scripting.md",
