@@ -1,137 +1,105 @@
+Seek can see that i'm using a global tags approach with a clean separator format. Let seek help you implement the hover tooltip functionality and explain TextMeshPro's link system.## How TextMeshPro Link Rich Text Works:
 
-## Basic Link Syntax
+### 1. **Link Tag Structure**
 
-TextMeshPro uses this format for clickable/interactive text:
-
+```html
+<link="linkID">Display Text</link>
 ```
-<link="linkId">Clickable Text</link>
+
+- `linkID`: A unique identifier for the link (can be any string)
+- `Display Text`: The text that appears and is clickable/hoverable
+
+### 2. **Combined with Color**
+
+```html
+<color=red><link="President Soll">President Soll</link></color>
 ```
 
-## How It Works
+This creates red-colored text that acts as a link.
 
-### 1. Link Tags
+### 3. **Link Detection**
 
-- `<link="myLink">` - Opens a link with ID "myLink"
-- `</link>` - Closes the link
-- The text between tags becomes interactive
-
-### 2. Link Detection
+TextMeshPro provides utilities to detect which link the mouse is over:
 
 ```csharp
-// Find which link (if any) the mouse is over
-int linkIndex = TMP_TextUtilities.FindIntersectingLink(
-    textComponent,           // Your TextMeshPro component
-    Input.mousePosition,     // Or eventData.position
-    camera                   // UI camera (can be null for overlay canvas)
-);
+int linkIndex = TMP_TextUtilities.FindIntersectingLink(textComponent, mousePosition, camera);
 ```
 
-### 3. Getting Link Information
+### 4. **Getting Link Information**
 
 ```csharp
-if (linkIndex != -1) // -1 means no link found
+if (linkIndex != -1)
 {
     TMP_LinkInfo linkInfo = textComponent.textInfo.linkInfo[linkIndex];
-    string linkID = linkInfo.GetLinkID();           // Gets "myLink"
-    string linkText = linkInfo.GetLinkText();       // Gets "Clickable Text"
-    
-    // You can now do something based on the linkID
-    HandleLinkClick(linkID);
+    string linkID = linkInfo.GetLinkID(); // Returns the ID from <link="ID">
 }
 ```
 
-## Complete Example
+## Where to Attach the TooltipHandler:
 
-### HTML-like Rich Text:
+### **Attach to the TextMeshPro GameObject**
 
-```
-This is normal text. <link="character1"><color=blue>Ewald Alphonso</color></link> is a character. 
-<link="location1"><color=green>Sordland</color></link> is a country.
-```
+The `TooltipHandler` component should be attached to the **same GameObject** that has your `TextMeshProUGUI` component. In your case, that's the GameObject with the `tm` TextMeshPro component.
 
-### Code to Handle:
+### **Automatic Attachment**
+
+The enhanced script automatically adds the handler in the `Start()` method:
 
 ```csharp
-public void OnPointerClick(PointerEventData eventData)
+private void AddTooltipHandler()
 {
-    int linkIndex = TMP_TextUtilities.FindIntersectingLink(textComponent, eventData.position, camera);
-    
-    if (linkIndex != -1)
-    {
-        TMP_LinkInfo linkInfo = textComponent.textInfo.linkInfo[linkIndex];
-        string linkID = linkInfo.GetLinkID();
-        
-        switch(linkID)
-        {
-            case "character1":
-                ShowCharacterInfo("Ewald Alphonso");
-                break;
-            case "location1":
-                ShowLocationInfo("Sordland");
-                break;
-        }
-    }
+    var handler = tm.gameObject.AddComponent<TooltipHandler>();
+    handler.Initialize(this);
 }
 ```
 
-## Advanced Features
+## Setup Instructions:
 
-### 1. Multiple Links Per Text
+### 1. **UI Setup**
 
-```
-<link="link1">First Link</link> and <link="link2">Second Link</link> in same text.
-```
-
-### 2. Nested Tags
+Create this hierarchy in your Canvas:
 
 ```
-<link="myLink"><color=red><b>Bold Red Link</b></color></link>
+Canvas
+├── StoryText (TextMeshPro) ← Your 'tm' component
+├── TooltipPanel (Panel)
+    └── TooltipText (TextMeshPro) ← For tooltip content
 ```
 
-### 3. Link Information Structure
+### 2. **Inspector Setup**
 
-```csharp
-public struct TMP_LinkInfo
-{
-    public string GetLinkID();    // Returns the link identifier
-    public string GetLinkText();  // Returns the actual text content
-    public int linkIdFirstCharacterIndex;  // Start position in text
-    public int linkIdLength;               // Length of link ID
-    public int linkTextFirstCharacterIndex; // Start of link text
-    public int linkTextLength;             // Length of link text  
-}
-```
+In your `SuzerainStoryManager`:
 
-## Your Implementation Benefits
+- `tm`: Your story TextMeshPro component
+- `tooltipPanel`: The tooltip panel GameObject
+- `tooltipText`: The TextMeshPro inside the tooltip panel
+- `canvas`: Your main Canvas
 
-1. **Global Tooltips**: Define once in Ink global tags, use everywhere
-2. **Automatic Processing**: Text gets processed to add link tags automatically
-3. **Hover Detection**: Uses `IPointerMoveHandler` for smooth hover effects
-4. **Flexible Styling**: Combine with `<color>` tags for visual feedback
+### 3. **Tooltip Panel Setup**
 
-## UI Setup Required
+- Add a `Panel` component with background
+- Add `ContentSizeFitter` (Preferred Size on both axes)
+- Style with background color, padding, etc.
 
-1. **TextMeshPro Component**: Must have "Raycast Target" enabled
-2. **Canvas**: Needs GraphicRaycaster component
-3. **EventSystem**: Must exist in scene (usually auto-created)
-4. **Tooltip Panel**: UI panel for displaying tooltip content
+## How the Enhanced System Works:
 
-## Performance Notes
+1. **Global Tags**: Your existing format works perfectly
+2. **Link Creation**: Converts words to `<link>` tags automatically
+3. **Hover Detection**: Uses `OnPointerMove` to detect when mouse hovers over links
+4. **Tooltip Display**: Shows tooltip on hover, hides when not hovering
+5. **Positioning**: Automatically positions tooltip near cursor
 
-- Link detection happens on mouse move, so keep it lightweight
-- `TMP_TextUtilities.FindIntersectingLink()` is optimized by Unity
-- Consider caching link information if text doesn't change frequently
+## Key Improvements:
 
-## Common Issues
+- **Hover-based**: Shows tooltips on hover, not click
+- **Smooth Experience**: Updates tooltip position as mouse moves
+- **Automatic Setup**: Handler is added automatically
+- **Word Boundary Matching**: Only replaces whole words
+- **Proper Cleanup**: Manages tooltip visibility correctly
 
-1. **Links Not Detecting**: Check if TextMeshPro has "Raycast Target" enabled
-2. **Wrong Camera**: Ensure correct camera reference for UI canvas type
-3. **Z-Order**: Make sure tooltip panel renders above text
-4. **Case Sensitivity**: Link IDs are case-sensitive
+The system now works exactly like Suzerain - hover over highlighted words to see tooltips!
 
-This system gives you the same professional tooltip behavior as Suzerain!
-
-# With Ink Integration
+# Seek Improved Implementation
 
 ```cs
 using System.Linq;
@@ -141,242 +109,234 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using SPACE_UTIL;
 
 public class SuzerainStoryManager : MonoBehaviour
 {
-	[SerializeField] TextAsset InkJson;
-	[SerializeField] TextMeshProUGUI tm;
-	[SerializeField] GameObject tooltipPanel;
-	[SerializeField] TextMeshProUGUI tooltipText;
-	[SerializeField] Canvas canvas;
-	
-	Story _story;
-	[SerializeField] string str;
-	private List<ToolTip> currentToolTips = new List<ToolTip>();
-	
-	private void Start()
-	{
-		// Hide tooltip panel initially
-		if (tooltipPanel != null)
-			tooltipPanel.SetActive(false);
-			
-		// Add tooltip handler to the text component
-		AddTooltipHandler();
-	}
-	
-	private void AddTooltipHandler()
-	{
-		if (tm != null)
-		{
-			var handler = tm.gameObject.GetComponent<TooltipHandler>();
-			if (handler == null)
-			{
-				handler = tm.gameObject.AddComponent<TooltipHandler>();
-			}
-			handler.Initialize(this);
-		}
-	}
-	
-	private void Update()
-	{
-		// Initialize story
-		if(INPUT.M.InstantDown(0))
-		{
-			this._story = new Story(this.InkJson.text);
-			currentToolTips = ToolTip.ExtractToolTips(_story.globalTags);
-			LOG.SaveLog(currentToolTips.ToTable(name: "LIST<> ToolTip"));
-		}
-		
-		// Continue story
-		if(INPUT.M.InstantDown(1))
-		{
-			if(_story.canContinue)
-			{
-				string content = this._story.Continue();
-				string processedContent = ProcessContentWithTooltips(content);
-				tm.text = processedContent;
-			}
-		}
-	}
-	
-	private string ProcessContentWithTooltips(string content)
-	{
-		string processedContent = content;
-		
-		// Sort tooltips by word length (longest first) to avoid partial replacements
-		var sortedTooltips = currentToolTips.OrderByDescending(t => t.word.Length);
-		
-		foreach (var toolTip in sortedTooltips)
-		{
-			// Create link tag with tooltip data
-			// Format: <link="tooltipId">word</link>
-			string linkId = $"tooltip_{currentToolTips.IndexOf(toolTip)}";
-			string replacement = $"<color={toolTip.color}><link=\"{linkId}\">{toolTip.word}</link></color>";
-			
-			// Use word boundary regex for exact word matching
-			string pattern = $@"\b{System.Text.RegularExpressions.Regex.Escape(toolTip.word)}\b";
-			processedContent = System.Text.RegularExpressions.Regex.Replace(
-				processedContent, 
-				pattern, 
-				replacement, 
-				System.Text.RegularExpressions.RegexOptions.IgnoreCase
-			);
-		}
-		
-		return processedContent;
-	}
-	
-	public void ShowTooltip(string linkId, Vector3 worldPosition)
-	{
-		// Extract tooltip index from linkId
-		if (linkId.StartsWith("tooltip_"))
-		{
-			string indexStr = linkId.Substring(8);
-			if (int.TryParse(indexStr, out int index) && index < currentToolTips.Count)
-			{
-				ToolTip tooltip = currentToolTips[index];
-				
-				if (tooltipPanel != null && tooltipText != null)
-				{
-					tooltipText.text = tooltip.tip;
-					tooltipPanel.SetActive(true);
-					
-					// Position tooltip
-					PositionTooltip(worldPosition);
-				}
-			}
-		}
-	}
-	
-	public void HideTooltip()
-	{
-		if (tooltipPanel != null)
-			tooltipPanel.SetActive(false);
-	}
-	
-	private void PositionTooltip(Vector3 worldPosition)
-	{
-		if (canvas == null || tooltipPanel == null) return;
-		
-		RectTransform tooltipRect = tooltipPanel.GetComponent<RectTransform>();
-		RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-		
-		// Convert world position to screen position
-		Vector2 screenPosition = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, worldPosition);
-		
-		// Convert screen position to local position in canvas
-		Vector2 localPosition;
-		RectTransformUtility.ScreenPointToLocalPointInRectangle(
-			canvasRect, 
-			screenPosition, 
-			canvas.worldCamera, 
-			out localPosition
-		);
-		
-		// Add offset and clamp to screen bounds
-		Vector2 offset = new Vector2(10, 10);
-		localPosition += offset;
-		
-		// Clamp to keep tooltip on screen
-		Vector2 canvasSize = canvasRect.sizeDelta;
-		Vector2 tooltipSize = tooltipRect.sizeDelta;
-		
-		localPosition.x = Mathf.Clamp(localPosition.x, 
-			-canvasSize.x/2 + tooltipSize.x/2, 
-			canvasSize.x/2 - tooltipSize.x/2);
-		localPosition.y = Mathf.Clamp(localPosition.y, 
-			-canvasSize.y/2 + tooltipSize.y/2, 
-			canvasSize.y/2 - tooltipSize.y/2);
-		
-		tooltipRect.localPosition = localPosition;
-	}
-	
-	[System.Serializable]
-	public class ToolTip
-	{
-		public string word = "";
-		public string tip = "";
-		public string color = "red";
-		
-		public static List<ToolTip> ExtractToolTips(List<string> TAG)
-		{
-			Dictionary<string, ToolTip> MAP_ToolTip = new Dictionary<string, ToolTip>();
-			foreach(string tag in TAG)
-			{
-				string[] kv = tag.split(@" \~ ").map(str => str.clean()).ToArray();
-				// Example:
-				// #ToolTip ~ Ewald Alphonso ~ A reformist and talented business magnate who was the main contender for party leadership ~ red
-				if (kv[0].match(@"^tooltip", "gmi").Length != 0)
-				{
-					string key = kv[1];
-					ToolTip _ToolTip = new ToolTip()
-					{
-						word = kv[1],
-						tip = kv[2],
-						color = kv[3],
-					};
-					MAP_ToolTip[key] = _ToolTip;
-				}
-			}
-			return MAP_ToolTip.map(kvp => kvp.Value).ToList();
-		}
-	}
+    [SerializeField] TextAsset InkJson;
+    [SerializeField] TextMeshProUGUI tm;
+    [SerializeField] GameObject tooltipPanel;
+    [SerializeField] TextMeshProUGUI tooltipText;
+    [SerializeField] Canvas canvas;
+    
+    Story _story;
+    [SerializeField] string str;
+    private Dictionary<string, ToolTip> tooltipMap = new Dictionary<string, ToolTip>();
+    
+    private void Start()
+    {
+        // Hide tooltip panel initially
+        if (tooltipPanel != null)
+            tooltipPanel.SetActive(false);
+            
+        // Add the tooltip handler to the TextMeshPro component
+        AddTooltipHandler();
+    }
+    
+    private void AddTooltipHandler()
+    {
+        // Remove existing handler if present
+        var existingHandler = tm.GetComponent<TooltipHandler>();
+        if (existingHandler != null)
+            DestroyImmediate(existingHandler);
+            
+        // Add new tooltip handler
+        var handler = tm.gameObject.AddComponent<TooltipHandler>();
+        handler.Initialize(this);
+    }
+    
+    private void Update()
+    {
+        // Initialize story and extract global tooltips
+        if(INPUT.M.InstantDown(0))
+        {
+            this._story = new Story(this.InkJson.text);
+            var tooltips = ToolTip.ExtractToolTips(_story.globalTags);
+            
+            // Store tooltips in dictionary for quick lookup
+            tooltipMap.Clear();
+            foreach(var tooltip in tooltips)
+            {
+                tooltipMap[tooltip.word] = tooltip;
+            }
+            
+            LOG.SaveLog(tooltips.ToTable(name: "LIST<> ToolTip"));
+        }
+        
+        // Continue story and process text with tooltips
+        if(INPUT.M.InstantDown(1))
+        {
+            if(_story.canContinue)
+            {
+                string content = this._story.Continue();
+                content = ProcessTooltipText(content);
+                tm.text = content;
+            }
+        }
+    }
+    
+    private string ProcessTooltipText(string content)
+    {
+        // Sort tooltips by word length (longest first) to avoid partial replacements
+        var sortedTooltips = tooltipMap.Values.OrderByDescending(t => t.word.Length);
+        
+        foreach (var toolTip in sortedTooltips)
+        {
+            // Create a link tag with the word as both display text and link ID
+            string linkTag = $"<color={toolTip.color}><link=\"{toolTip.word}\">{toolTip.word}</link></color>";
+            
+            // Use word boundary regex to replace whole words only
+            string pattern = @"\b" + System.Text.RegularExpressions.Regex.Escape(toolTip.word) + @"\b";
+            content = System.Text.RegularExpressions.Regex.Replace(content, pattern, linkTag, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        }
+        
+        return content;
+    }
+    
+    public void ShowTooltip(string word, Vector3 worldPosition)
+    {
+        if (tooltipMap.ContainsKey(word) && tooltipPanel != null)
+        {
+            var tooltip = tooltipMap[word];
+            tooltipText.text = tooltip.tip;
+            tooltipPanel.SetActive(true);
+            
+            // Position tooltip near the mouse/touch position
+            PositionTooltip(worldPosition);
+        }
+    }
+    
+    private void PositionTooltip(Vector3 worldPosition)
+    {
+        RectTransform tooltipRect = tooltipPanel.GetComponent<RectTransform>();
+        
+        // Convert world position to screen position
+        Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(canvas.worldCamera, worldPosition);
+        
+        // Convert screen position to local position in canvas
+        Vector2 localPoint;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvas.transform as RectTransform, 
+            screenPoint, 
+            canvas.worldCamera, 
+            out localPoint
+        );
+        
+        // Apply offset to avoid cursor overlap
+        Vector2 offset = new Vector2(10, 10);
+        localPoint += offset;
+        
+        // Keep tooltip within canvas bounds
+        RectTransform canvasRect = canvas.transform as RectTransform;
+        Vector2 canvasSize = canvasRect.sizeDelta;
+        Vector2 tooltipSize = tooltipRect.sizeDelta;
+        
+        localPoint.x = Mathf.Clamp(localPoint.x, -canvasSize.x/2 + tooltipSize.x/2, canvasSize.x/2 - tooltipSize.x/2);
+        localPoint.y = Mathf.Clamp(localPoint.y, -canvasSize.y/2 + tooltipSize.y/2, canvasSize.y/2 - tooltipSize.y/2);
+        
+        tooltipRect.localPosition = localPoint;
+    }
+    
+    public void HideTooltip()
+    {
+        if (tooltipPanel != null)
+            tooltipPanel.SetActive(false);
+    }
+    
+    [System.Serializable]
+    public class ToolTip
+    {
+        public string word = "";
+        public string tip = "";
+        public string color = "red";
+        
+        public static List<ToolTip> ExtractToolTips(List<string> TAG)
+        {
+            Dictionary<string, ToolTip> MAP_ToolTip = new Dictionary<string, ToolTip>();
+            foreach(string tag in TAG)
+            {
+                string[] kv = tag.split(@" \~ ").map(str => str.clean()).ToArray();
+                // Example:
+                // #ToolTip ~ Ewald Alphonso ~ A reformist and talented business magnate who was the main contender for party leadership ~ blue
+                if (kv[0].match(@"^tooltip", "gmi").Length != 0)
+                {
+                    if (kv.Length >= 4)
+                    {
+                        string key = kv[1];
+                        ToolTip _ToolTip = new ToolTip()
+                        {
+                            word = kv[1],
+                            tip = kv[2],
+                            color = kv[3],
+                        };
+                        MAP_ToolTip[key] = _ToolTip;
+                    }
+                }
+            }
+            return MAP_ToolTip.map(kvp => kvp.Value).ToList();
+        }
+    }
 }
 
-// Separate component to handle tooltip interactions
+// Separate component that handles TextMeshPro link interactions
 public class TooltipHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerMoveHandler
 {
-	private TextMeshProUGUI textComponent;
-	private SuzerainStoryManager storyManager;
-	private Camera uiCamera;
-	private int currentLinkIndex = -1;
-	
-	public void Initialize(SuzerainStoryManager manager)
-	{
-		storyManager = manager;
-		textComponent = GetComponent<TextMeshProUGUI>();
-		uiCamera = storyManager.canvas.worldCamera;
-	}
-	
-	public void OnPointerEnter(PointerEventData eventData)
-	{
-		CheckForTooltip(eventData);
-	}
-	
-	public void OnPointerMove(PointerEventData eventData)
-	{
-		CheckForTooltip(eventData);
-	}
-	
-	public void OnPointerExit(PointerEventData eventData)
-	{
-		currentLinkIndex = -1;
-		storyManager.HideTooltip();
-	}
-	
-	private void CheckForTooltip(PointerEventData eventData)
-	{
-		if (textComponent == null || storyManager == null) return;
-		
-		// Find if pointer is over a link
-		int linkIndex = TMP_TextUtilities.FindIntersectingLink(textComponent, eventData.position, uiCamera);
-		
-		if (linkIndex != -1 && linkIndex != currentLinkIndex)
-		{
-			// New link detected
-			currentLinkIndex = linkIndex;
-			TMP_LinkInfo linkInfo = textComponent.textInfo.linkInfo[linkIndex];
-			string linkID = linkInfo.GetLinkID();
-			
-			storyManager.ShowTooltip(linkID, eventData.position);
-		}
-		else if (linkIndex == -1 && currentLinkIndex != -1)
-		{
-			// No longer over a link
-			currentLinkIndex = -1;
-			storyManager.HideTooltip();
-		}
-	}
+    private TextMeshProUGUI textComponent;
+    private SuzerainStoryManager storyManager;
+    private Camera uiCamera;
+    private int currentLinkIndex = -1;
+    
+    public void Initialize(SuzerainStoryManager manager)
+    {
+        storyManager = manager;
+        textComponent = GetComponent<TextMeshProUGUI>();
+        uiCamera = storyManager.canvas.worldCamera;
+    }
+    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        // This is called when mouse enters the text area
+    }
+    
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        // Hide tooltip when mouse leaves text area
+        storyManager.HideTooltip();
+        currentLinkIndex = -1;
+    }
+    
+    public void OnPointerMove(PointerEventData eventData)
+    {
+        if (textComponent == null) return;
+        
+        // Find which link (if any) the mouse is over
+        int linkIndex = TMP_TextUtilities.FindIntersectingLink(textComponent, eventData.position, uiCamera);
+        
+        if (linkIndex != currentLinkIndex)
+        {
+            currentLinkIndex = linkIndex;
+            
+            if (linkIndex != -1)
+            {
+                // Mouse is over a link - show tooltip
+                TMP_LinkInfo linkInfo = textComponent.textInfo.linkInfo[linkIndex];
+                string linkID = linkInfo.GetLinkID();
+                storyManager.ShowTooltip(linkID, eventData.position);
+            }
+            else
+            {
+                // Mouse is not over any link - hide tooltip
+                storyManager.HideTooltip();
+            }
+        }
+        else if (linkIndex != -1)
+        {
+            // Update tooltip position if still hovering over same link
+            TMP_LinkInfo linkInfo = textComponent.textInfo.linkInfo[linkIndex];
+            string linkID = linkInfo.GetLinkID();
+            storyManager.ShowTooltip(linkID, eventData.position);
+        }
+    }
 }
 ```
