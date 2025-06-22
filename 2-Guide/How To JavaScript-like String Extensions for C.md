@@ -1,8 +1,7 @@
 
+This library provides JavaScript-style `.split()` and `.match()` methods for C# strings, making regex operations more intuitive.
 
-This library provides JavaScript-style `split()` and `match()` methods for C# strings, making regex operations more intuitive.
-
-## Quick Start
+## Quick Ref
 
 ```csharp
 using System;
@@ -15,29 +14,7 @@ string[] parts = text.split(@",\s*");              // ["Hello world1", "test wor
 
 ## Methods
 
-### `.match(pattern, flags)`
-
-Finds all matches of a regex pattern in the string (like JavaScript's `str.match(/pattern/flags)`).
-
-```csharp
-string text = @"Error: failed
-Warning: slow  
-Error: timeout";
-
-// Find all patterns (default behavior)
-text.match(@"Error: \w+")              // ["Error: failed", "Error: timeout"]
-
-// Same as above (gm is default)
-text.match(@"Error: \w+", "gm")        // ["Error: failed", "Error: timeout"]
-
-// Find patterns at end of lines
-text.match(@"\w+$", "gm")              // ["failed", "slow", "timeout"]
-
-// Case insensitive
-text.match(@"error", "gim")            // ["Error", "Error"] (finds both)
-```
-
-### `.split(pattern, flags)`
+### `.split(this string str, pattern, flags = "gx")`
 
 Splits the string using a regex pattern (like JavaScript's `str.split(/pattern/flags)`).
 
@@ -54,6 +31,28 @@ data.split(@"\s*->\s*")               // ["A", "B\nC", "D\nE", "F"]
 "word1   word2    word3".split(@" +")  // ["word1", "word2", "word3"]
 ```
 
+### `.match(this string str, pattern, flags = "gm")`
+
+Finds all matches of a regex pattern in the string (like JavaScript's `str.match(/pattern/flags)`).
+
+```csharp
+string text = @"Error: failed
+Warning: slow  
+Error: timeout";
+
+// Find all patterns (default behavior) with "gm"
+text.match(@"Error: \w+")              // ["Error: failed", "Error: timeout"]
+
+// Same as above (gm is default)
+text.match(@"Error: \w+", "gm")        // ["Error: failed", "Error: timeout"]
+
+// Find patterns at end of lines
+text.match(@"\w+$", "gm")              // ["failed", "slow", "timeout"]
+
+// Case insensitive
+text.match(@"error", "gim")            // ["Error", "Error"] (finds both)
+```
+
 ## Default Flags
 
 - **`.match()`** defaults to `"gm"` flags (find all matches, multiline)
@@ -68,15 +67,16 @@ text.split(@"\n")                // Same as text.split(@"\n", "x")
 
 ## Regex Flags
 
-|Flag|Name|Description|Example Use|
-|---|---|---|---|
-|`g`|Global|Find all matches (not just first)|`text.match(@"word", "g")` finds all "word"|
-|`m`|Multiline|`^` and `$` work per-line|`text.match(@"^\w+", "gm")` finds first word of each line|
-|`i`|IgnoreCase|Case insensitive matching|`text.match(@"error", "gi")` finds "Error", "ERROR", etc.|
-|`x`|ExplicitCapture|Only named groups `(?<name>...)` capture|Prevents unwanted captures in split|
+| Flag | Name            | Description                              | Example Use                                               |
+| ---- | --------------- | ---------------------------------------- | --------------------------------------------------------- |
+| `g`  | Global          | Find all matches (not just first)        | `text.match(@"word", "g")` finds all "word"               |
+| `m`  | Multiline       | `^` and `$` work per-line                | `text.match(@"^\w+", "gm")` finds first word of each line |
+| `i`  | IgnoreCase      | Case insensitive matching                | `text.match(@"error", "gi")` finds "Error", "ERROR", etc. |
+| `x`  | ExplicitCapture | Only named groups `(?<name>...)` capture | Prevents unwanted captures in split                       |
 
-## Common Patterns
+## Example Common Patterns
 
+### log
 ```csharp
 string log = @"2024-01-15 ERROR: Database failed
 2024-01-15 INFO: Server started  
@@ -94,9 +94,6 @@ log.split(@"\n")                          // ["2024-01-15 ERROR: ...", "2024-01-
 // Extract just the messages (everything after the date and level)
 log.match(@"(?:ERROR|INFO|WARN): (.+)", "gm")  // Gets the full matches
 ```
-
-## Real-World Examples
-
 ### Parse CSV-like data
 
 ```csharp
@@ -109,7 +106,6 @@ foreach(string row in rows)
     // Process columns...
 }
 ```
-
 ### Extract URLs from text
 
 ```csharp
@@ -139,7 +135,7 @@ string[] debugCalls = code.match(@"Debug\.Log\([^)]+\)", "gm");
 
 These utility methods support the main functionality and provide additional string operations.
 
-### `clean(string str)`
+#### `clean(this string str)`
 
 Removes `\r` characters, leaving only `\n` for consistent line handling across platforms.
 
@@ -151,7 +147,7 @@ string cleanText = windowsText.clean();    // "line1\nline2\n"
 text.split(@"\n")  // Automatically calls clean() first
 ```
 
-### `flat(string str, string name)`
+#### `flat(this string str, string name)`
 
 Displays string in a single line with visible escape characters - perfect for debugging multiline strings.
 
@@ -164,7 +160,7 @@ string data = "line1\nline2\r\n";
 Debug.Log(data.flat("Raw data: "));        // "Raw data: line1\nline2\r\n"
 ```
 
-### `join(IEnumerable<string> strings, string separator)`
+#### `join(this IEnumerable<string> strings, string separator)`
 
 Joins string arrays/collections with a separator (like JavaScript's `array.join()`).
 
@@ -178,7 +174,7 @@ var matches = text.match(@"word\d+");
 string output = matches.join(" -> ");      // "word1 -> word2 -> word3"
 ```
 
-### `repeat(char character, int count)`
+#### `repeat(char character, int count)`
 
 Repeats a character multiple times.
 
@@ -192,34 +188,11 @@ Debug.Log("TITLE");
 Debug.Log('='.repeat(50));
 ```
 
-### `str_to_flags(string flags)`
+#### `str_to_flags(string flags)`
 
 Converts flag string to `RegexOptions` enum (used internally by split/match).
 
 ```csharp
 RegexOptions opts = str_to_flags("gim");   // Global + IgnoreCase + Multiline
 // Rarely used directly - split() and match() handle this automatically
-```
-
-## Complete Example
-
-```csharp
-string logData = @"2024-01-15 ERROR: Database failed
-2024-01-15 INFO: Server started  
-2024-01-16 ERROR: Connection lost";
-
-// Debug the raw string first
-Debug.Log(logData.flat("Raw log: "));
-
-// Extract and join error messages
-var errors = logData.match(@"ERROR: .+");
-string errorSummary = errors.join(" | ");
-Debug.Log($"All errors: {errorSummary}");
-
-// Create a formatted report
-string[] lines = logData.split(@"\n");
-string report = "=== LOG REPORT ===\n" + 
-                lines.join("\n- ") + 
-                "\n" + '='.repeat(20);
-Debug.Log(report);
 ```
