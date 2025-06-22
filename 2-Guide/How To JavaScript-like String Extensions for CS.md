@@ -1,6 +1,5 @@
 
 This library provides JavaScript-style `.split()` and `.match()` methods for C# strings, making regex operations more intuitive.
-
 ## namespace using SPACE_UTIL
 
 ```csharp
