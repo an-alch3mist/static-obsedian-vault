@@ -52,16 +52,13 @@ text.match(@"\w+$", "gm")              // ["failed", "slow", "timeout"]
 text.match(@"error", "gim")            // ["Error", "Error"] (finds both)
 ```
 
-## Default Flags
 
-- **`.match()`** defaults to `"gm"` flags (find all matches, multiline)
-- **`.split()`** defaults to `"x"` flag (explicit capture only)
+### `.replace(this string str, pattern, replace_with, flags = "gm")`
 
-This means:
+Finds all matches of a regex pattern in the string and replace them with custom word.
 
 ```csharp
-text.match(@"word\d+")           // Same as text.match(@"word\d+", "gm")
-text.split(@"\n")                // Same as text.split(@"\n", "x")
+text.replace($@"{C.esc(word)}\d+", $@"<link=\"{_ToolTip.tip}\">word</link>")
 ```
 
 ## Regex Flags
