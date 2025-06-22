@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2-Guide/How To TextMeshPro Link System Hover.md",
+                "file": "0-Index/Factory Automation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "How To TextMeshPro Link System Hover"
+              "title": "Factory Automation"
             }
           }
         ],
@@ -121,7 +121,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 365.5026054382324
   },
   "right": {
     "id": "5fbe49f137a42625",
@@ -214,8 +214,9 @@
   },
   "active": "83bf2a2c91985b14",
   "lastOpenFiles": [
-    "2-Guide/How To Git Push Existing File To GitHub.md",
     "2-Guide/How To TextMeshPro Link System Hover.md",
+    "@export/Node.moveQ().pdf",
+    "2-Guide/How To Git Push Existing File To GitHub.md",
     "2-Guide/How To Integrate Ink To Unity.md",
     "2-Guide/How To JavaScript-like String Extensions for CS.md",
     "1-Ref/Decision Making/Decision Making Similar To Papers please.md",
