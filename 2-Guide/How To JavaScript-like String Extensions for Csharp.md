@@ -1,10 +1,10 @@
 
 This library provides JavaScript-style `.split()` and `.match()` methods for C# strings, making regex operations more intuitive.
 
-## Quick Ref
+## namespace using SPACE_UTIL
 
 ```csharp
-using System;
+using SPACE_UTIL;
 
 // Basic usage
 string text = "Hello world1, test word2, another word3";
