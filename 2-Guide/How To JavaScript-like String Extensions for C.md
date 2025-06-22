@@ -127,9 +127,8 @@ string[] debugCalls = code.match(@"Debug\.Log\([^)]+\)", "gm");
 ## Tips
 
 1. **Use `.clean()` for multiline strings** - removes `\r` characters that can interfere with line matching
-2. **Default flags work for 90% of cases** - you rarely need to specify flags manually
-3. **Use raw strings `@""` for regex patterns** - avoids escaping backslashes
-4. **Test complex patterns first** - use online regex testers for complicated patterns
+2. **Default flags ("gx" for split, "gm" for match) work for 90% of cases** - you rarely need to specify flags manually
+3. **Test complex patterns first** - use [***online regex 101***](https://regex101.com/) testers for complicated patterns
 
 ## Essential Extension Methods
 
@@ -153,11 +152,7 @@ Displays string in a single line with visible escape characters - perfect for de
 
 ```csharp
 string multiline = "Hello\r\nWorld\tTest";
-Debug.Log(multiline.flat("DEBUG: "));      // "DEBUG: Hello\r\nWorld\tTest"
-
-// Great for logging what's actually in your string
-string data = "line1\nline2\r\n";
-Debug.Log(data.flat("Raw data: "));        // "Raw data: line1\nline2\r\n"
+Debug.Log(multiline.flat("check: "));      // "check: Hello\r\nWorld\tTest"
 ```
 
 #### `join(this IEnumerable<string> strings, string separator)`
@@ -194,5 +189,5 @@ Converts flag string to `RegexOptions` enum (used internally by split/match).
 
 ```csharp
 RegexOptions opts = str_to_flags("gim");   // Global + IgnoreCase + Multiline
-// Rarely used directly - split() and match() handle this automatically
+// Rarely used, 90% of cases direct usage - split() and match() handle this automatically
 ```
