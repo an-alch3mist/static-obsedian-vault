@@ -67,12 +67,12 @@ text.split(@"\n")                // Same as text.split(@"\n", "x")
 
 ## Regex Flags
 
-| Flag | Name            | Description                              | Example Use                                               |
-| ---- | --------------- | ---------------------------------------- | --------------------------------------------------------- |
-| `g`  | Global          | Find all matches (not just first)        | `text.match(@"word", "g")` finds all "word"               |
-| `m`  | Multiline       | `^` and `$` work per-line                | `text.match(@"^\w+", "gm")` finds first word of each line |
-| `i`  | IgnoreCase      | Case insensitive matching                | `text.match(@"error", "gi")` finds "Error", "ERROR", etc. |
-| `x`  | ExplicitCapture | Only named groups `(?<name>...)` capture | Prevents unwanted captures in split                       |
+| Flag | Name            | Description                              | Example Use                                                    |
+| ---- | --------------- | ---------------------------------------- | -------------------------------------------------------------- |
+| `g`  | Global          | Find all matches (not just first)        | `text.match(@"word", "g")` finds all "word"                    |
+| `m`  | Multiline       | `^` and `$` work per-line                | `text.match(@"^\w+", "gm")` finds first word of each line      |
+| `i`  | IgnoreCase      | Case insensitive matching                | `text.match(@"error", "gi")` finds "Error", "ERROR", etc.      |
+| `x`  | ExplicitCapture | Only named groups `(?<name>...)` capture | Prevents unwanted captures in    "a -> b".split(" -> ", "gx"). |
 
 ## Example Common Patterns
 
