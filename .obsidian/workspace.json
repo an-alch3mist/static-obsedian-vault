@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2-Guide/How To Chess Integration with Stockfish.md",
+                "file": "2-Guide/How To Git Push Existing File To GitHub.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "How To Chess Integration with Stockfish"
+              "title": "How To Git Push Existing File To GitHub"
             }
           }
         ],
@@ -107,7 +107,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 384.5026054382324
   },
   "right": {
     "id": "5fbe49f137a42625",
@@ -200,8 +200,8 @@
   },
   "active": "f87ade77c3203ceb",
   "lastOpenFiles": [
-    "2-Guide/How To TextMeshPro Link System Hover.md",
     "2-Guide/How To Chess Integration with Stockfish.md",
+    "2-Guide/How To TextMeshPro Link System Hover.md",
     "1-Ref/Node System/Topological Sorting for Each Cluster.md",
     "1-Ref/Node System/Node Network System Store Type.md",
     "2-Guide/How To JavaScript-like String Extensions for CS.md",

@@ -18,3 +18,10 @@ git add .
 git commit -m "Your commit message here"
 git push
 ```
+
+### for each unity project
+
+``` 
+git init at Assets/_/.git/     -> SPACE_UTIL
+git init at Assets/.git/       -> #Name
+```
