@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (Grok 3).md",
+                "file": "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced Prompt.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "How To Farmer Was Replaced (Grok 3)"
+              "title": "How To Farmer Was Replaced Prompt"
             }
           }
         ],
@@ -200,10 +200,11 @@
   },
   "active": "f87ade77c3203ceb",
   "lastOpenFiles": [
+    "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (Grok 3).md",
+    "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced Prompt.md",
+    "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (OpenAi).md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (Claude 4).md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (Gemini 2.5pro).md",
-    "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (Grok 3).md",
-    "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (OpenAi).md",
     "2-Guide/How To Farmer Was Replaced",
     "2-Guide/How To Git Push Existing File To GitHub.md",
     "2-Guide/How To Chess Integration with Stockfish.md",
@@ -233,7 +234,6 @@
     "1-Ref/Node System/Node System Topological Ordering + Cluster.md",
     "1-Ref/Node System/Node.moveQ().html",
     "1-Ref/Node System",
-    "1-Ref/performance/Performance In General(List, Q, Hashset, MAP).md",
     "1-Ref/performance",
     "ad-attachment/Pasted image 20250518140248.png",
     "ad-attachment/Pasted image 20250518140217.png",
