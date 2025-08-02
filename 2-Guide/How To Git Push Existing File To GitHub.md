@@ -5,7 +5,7 @@ navigate inside folder containing index.html
 
 ```bash
 git init
-git remote add origin https://github.com/an-alch3mist/Loop-GMTK-2025.git
+git remote add origin https://github.com/an-alch3mist/Loop-2025.git
 git branch -M main
 git add .
 git commit -m "Initial commit: index.html"
