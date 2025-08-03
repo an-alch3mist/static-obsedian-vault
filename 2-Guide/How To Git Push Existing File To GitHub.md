@@ -19,8 +19,7 @@ git commit -m "Your commit message here"
 git push
 ```
 
-
-
+// todo how to init and pull to other directory ?
 
 # Where to git Init
 #### for each unity project perform git init in following directory:

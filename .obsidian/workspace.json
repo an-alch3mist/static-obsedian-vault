@@ -42,6 +42,7 @@
           {
             "id": "f70c236908aaf826",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
@@ -49,12 +50,12 @@
                 "mode": "source",
                 "source": false
               },
+              "pinned": true,
               "icon": "lucide-file",
               "title": "How To GameController Command Types - Detailed Guide"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -216,15 +217,15 @@
       "obsidian-tts:Text to Speech": false
     }
   },
-  "active": "f70c236908aaf826",
+  "active": "f87ade77c3203ceb",
   "lastOpenFiles": [
-    "2-Guide/How To Git Push Existing File To GitHub.md",
+    "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced Prompt.md",
     "2-Guide/How To Farmer Was Replaced/How To GameController Command Types - Detailed Guide.md",
+    "2-Guide/How To Git Push Existing File To GitHub.md",
     "2-Guide/How To Integrate Ink To Unity.md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (Claude 4).md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer was Replaced Prompt Just for Change.md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced Prompt Improve(ver 1).md",
-    "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced Prompt.md",
     "1-Ref/Node System/Node Network System Store Type.md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (Grok 3).md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (OpenAi).md",
