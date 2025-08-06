@@ -54,8 +54,23 @@
               "icon": "lucide-file",
               "title": "How To GameController Command Types - Detailed Guide"
             }
+          },
+          {
+            "id": "5ad30d2c643bf149",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2-Guide/How To Farmer Was Replaced/How To Script Dependency.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "How To Script Dependency"
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -217,11 +232,12 @@
       "obsidian-tts:Text to Speech": false
     }
   },
-  "active": "f87ade77c3203ceb",
+  "active": "5ad30d2c643bf149",
   "lastOpenFiles": [
+    "2-Guide/How To Git Push Existing File To GitHub.md",
+    "2-Guide/How To Farmer Was Replaced/How To Script Dependency.md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced Prompt.md",
     "2-Guide/How To Farmer Was Replaced/How To GameController Command Types - Detailed Guide.md",
-    "2-Guide/How To Git Push Existing File To GitHub.md",
     "2-Guide/How To Integrate Ink To Unity.md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (Claude 4).md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer was Replaced Prompt Just for Change.md",
@@ -248,7 +264,6 @@
     "ad-attachment/git push.txt",
     "1-Ref/Decision Making/Step-by-Step Guide .ink and Unity for a Papers, Please-Inspired Game.md",
     "1-Ref/Decision Making",
-    "1-Ref/Node System/Node.moveQ().md",
     "2-Guide",
     "Untitled.canvas",
     "1-Ref/Node System/Node.moveQ().html",
