@@ -30,20 +30,24 @@
 
 ## UTIL.cs ( leaf )
 ```cs
-class UTIL
-struct v2
-class INPUT
-class C
-class AN
-class LOG
+	struct v2 [System.Serializable]
+	class Board<T>
+	static class Z
+	static class INPUT
+	static class AN
+	static class C
+	static class U
+	static class ITER
+	static class LOG
+	static class DRAW
 ```
 ## INIManager.cs( -> UTIL.cs )
 ```cs
-[DefaultExecutionOrder(-1000)] // first MonoBehaviour script to run, after UnityEngine Initialization
-INIManager : MonoBehaviour
--> method C.Init()
--> method INPUT.Init()
--> LOG.Init()
+	[DefaultExecutionOrder(-1000)] // first MonoBehaviour script to run, after UnityEngine Initialization
+	INIManager : MonoBehaviour
+	-> method C.Init()
+	-> method INPUT.Init()
+	-> LOG.Init()
 ```
 
 
