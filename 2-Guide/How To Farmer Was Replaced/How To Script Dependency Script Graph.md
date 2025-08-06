@@ -22,7 +22,6 @@
 	PythonCodeEditorSyntaxHighlight.cs
 ## ad
 	LoadNextScene.cs
-
 ## __ scripts
 	INITManager.cs
 	UTIL/UTIL.cs
