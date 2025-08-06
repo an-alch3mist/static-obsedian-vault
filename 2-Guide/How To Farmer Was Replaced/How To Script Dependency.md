@@ -1,6 +1,7 @@
+### - To Understand The Flow of Exec
+### - To Know The Right Script To Alter From Oren/Seek/Nox
 
 1. All .cs scripts in the archive
-
 ## ProgramExec
 	GameControllerBase.cs
 	PerScene_0.cs
@@ -44,7 +45,6 @@ INIManager : MonoBehaviour
 -> method INPUT.Init()
 -> LOG.Init()
 ```
-
 
 
 ### PythonToken.cs (complete leaf)
