@@ -382,75 +382,76 @@ class PythonCodeEditorSyntaxHighlight: MonoBehaviour
 	all [SerielizedField] as per requirement
 
 ```cs
-overide void RegisterCommands()
-	RegisterAction("say", SayCommand);
-	RegisterAction("submit", SubmitCommand);
-	RegisterAction("move", MoveCommand);
-	// a function that intake object[] and output IEnumerator
-	RegisterAction(string commandName, Func<object[], IEnumerator> action) 
-		this.actionCommands[commandName] = action; // created in base class
-	RegisterPredicate(string commandName, Func<object[], IEnumerator> predicate)
-		this.predicateCommands[commandName] = predicate; // created in base class
-	RegisterValueGetter(string commandName, Func<object[], object> getter)
-		this.valueGetterCommands[commandName] = getter; // created in base class
+	class GameControllerBase_0: GameControllerBase
+		overide void RegisterCommands()
+			RegisterAction("say", SayCommand);
+			RegisterAction("submit", SubmitCommand);
+			RegisterAction("move", MoveCommand);
+			// a function that intake object[] and output IEnumerator
+			RegisterAction(string commandName, Func<object[], IEnumerator> action) 
+				this.actionCommands[commandName] = action; // created in base class
+			RegisterPredicate(string commandName, Func<object[], IEnumerator> predicate)
+				this.predicateCommands[commandName] = predicate; // created in base class
+			RegisterValueGetter(string commandName, Func<object[], object> getter)
+				this.valueGetterCommands[commandName] = getter; // created in base class
 ```
 
 #### example actionCommand
 
 ```cs
-	[Header("move")]
-	[SerializeField] float move_duration = 0.3f;
-	private IEnumerator MoveCommand(object[] args)
-	{
-		if (args.Length == 2)
+		[Header("move")]
+		[SerializeField] float move_duration = 0.3f;
+		private IEnumerator MoveCommand(object[] args)
 		{
-			string dx = args[0].ToString().ToLower();
-			string dy = args[1].ToString().ToLower();
-			Debug.Log(dx + "//" + dy);
-			if (!(dx.fmatch(@"^([-+]?1|0)$") && dy.fmatch(@"^([-+]?1|0)$")))
+			if (args.Length == 2)
 			{
-				throw new Exception("invalid direction x, y can only be -1, 0, +1");
+				string dx = args[0].ToString().ToLower();
+				string dy = args[1].ToString().ToLower();
+				Debug.Log(dx + "//" + dy);
+				if (!(dx.fmatch(@"^([-+]?1|0)$") && dy.fmatch(@"^([-+]?1|0)$")))
+				{
+					throw new Exception("invalid direction x, y can only be -1, 0, +1");
+				}
+				Vector3 moveVector = new Vector2(dx.parseInt(), dy.parseInt());
+				yield return util_moveSquashAnim(this.playerTransform, duration: this.move_duration, moveVector, 0.9f, 0.9f);
 			}
-			Vector3 moveVector = new Vector2(dx.parseInt(), dy.parseInt());
-			yield return util_moveSquashAnim(this.playerTransform, duration: this.move_duration, moveVector, 0.9f, 0.9f);
-		}
-		else if (args.Length == 1)
-		{
-			string direction = args[0].ToString().ToLower();
-			Vector3 moveVector = Vector3.zero;
-			switch (direction)
+			else if (args.Length == 1)
 			{
-				case "up": moveVector = Vector3.up; break;
-				case "down": moveVector = Vector3.down; break;
-				case "left": moveVector = Vector3.left; break;
-				case "right": moveVector = Vector3.right; break;
-				default:
-					throw new Exception($"Invalid dir: {direction}, can only be 'east', 'west', 'north', 'south'");
+				string direction = args[0].ToString().ToLower();
+				Vector3 moveVector = Vector3.zero;
+				switch (direction)
+				{
+					case "up": moveVector = Vector3.up; break;
+					case "down": moveVector = Vector3.down; break;
+					case "left": moveVector = Vector3.left; break;
+					case "right": moveVector = Vector3.right; break;
+					default:
+						throw new Exception($"Invalid dir: {direction}, can only be 'east', 'west', 'north', 'south'");
+				}
+				yield return util_moveSquashAnim(this.playerTransform, duration: this.move_duration, moveVector, 0.9f, 0.9f);
 			}
-			yield return util_moveSquashAnim(this.playerTransform, duration: this.move_duration, moveVector, 0.9f, 0.9f);
-		}
-		else
-		{
-			throw new Exception("move() can take only either 1 or 2 argument");
-		}
-		#region commented old method
-		/*
-		if (playerTransform != null)
-		{
-			Vector3 startPos = playerTransform.position;
-			Vector3 endPos = startPos + moveVector;
-			float elapsed = 0f;
-			while (elapsed < 1f)
+			else
 			{
-				elapsed += Time.deltaTime * moveSpeed;
-				playerTransform.position = Vector3.Lerp(startPos, endPos, elapsed);
-				yield return null;
+				throw new Exception("move() can take only either 1 or 2 argument");
 			}
-			playerTransform.position = endPos;
+			#region commented old method
+			/*
+			if (playerTransform != null)
+			{
+				Vector3 startPos = playerTransform.position;
+				Vector3 endPos = startPos + moveVector;
+				float elapsed = 0f;
+				while (elapsed < 1f)
+				{
+					elapsed += Time.deltaTime * moveSpeed;
+					playerTransform.position = Vector3.Lerp(startPos, endPos, elapsed);
+					yield return null;
+				}
+				playerTransform.position = endPos;
+			}
+			*/
+			#endregion
 		}
-		*/
-		#endregion
-	}
 ```
 
 #### example predicateCommand
