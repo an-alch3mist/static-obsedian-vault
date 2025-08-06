@@ -27,6 +27,24 @@
 	UTIL/UTIL.cs
 
 
+## UTIL.cs ( leaf )
+```cs
+class UTIL
+struct v2
+class INPUT
+class C
+class AN
+class LOG
+```
+## INIManager.cs( -> UTIL.cs )
+```cs
+[DefaultExecutionOrder(-1000)] // first MonoBehaviour script to run, after UnityEngine Initialization
+INIManager : MonoBehaviour
+-> method C.Init()
+-> method INPUT.Init()
+-> LOG.Init()
+```
+
 
 
 ### PythonToken.cs (complete leaf)
