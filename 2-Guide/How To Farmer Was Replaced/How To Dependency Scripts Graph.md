@@ -22,7 +22,8 @@
 	PythonCodeEditorSyntaxHighlight.cs
 ## ad
 	LoadNextScene.cs
-## __ scripts
+
+## UTIL scripts
 	INITManager.cs
 	UTIL/UTIL.cs
 
@@ -292,10 +293,9 @@
 	class DraggableItem : MonoBehaviour, , IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 
 
-### PythonCodeEditorSyntaxHighlight.cs( -> )
+### PythonCodeEditorSyntaxHighlight.cs( -> GameBuiltinMethods.cs )
 	
-
------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 ```cs
 class PythonCodeEditorSyntaxHighlight: MonoBehaviour
 	-> class SyntaxHighlighter
@@ -320,14 +320,14 @@ class PythonCodeEditorSyntaxHighlight: MonoBehaviour
 
 -----------------------------------------------------------------------------------------------------------------------
 ```cs
-class TextSegment
-
+	class TextSegment
 		public int Start
 		public int Length
 		public string ColorCode // Hex Style #EAEAEA
 ```
 
 ### GameBuiltinMethods.cs( -> GameControllerBase.cs)
+```cs
 	class GameBuiltinMethods
 		-> class GameControllerBase
 
@@ -336,7 +336,7 @@ class TextSegment
 		// if Any of GameControllerBase.MAP_actionCmd, _predicateCmd, valueCmd 
 			contains key as "function_name" than perform action or routine or return bool
 		// UnregisterGameController()
-
+```
 ------------------------------------------------------------------------------------------------------------
 ```cs
 	public static void RegisterGameController(GameControllerBase controller) // does sceneController = controller
