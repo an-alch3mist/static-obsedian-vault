@@ -29,7 +29,7 @@ git init at Assets/.git/       push to -> #Name repository
 ```
 
 
-to pull
+to fetch
 
 ```bash
 # make a backup branch just in case
