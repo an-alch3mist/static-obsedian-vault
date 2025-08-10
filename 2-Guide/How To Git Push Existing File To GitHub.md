@@ -29,7 +29,7 @@ git init at Assets/.git/       push to -> #Name repository
 ```
 
 
-### the fetch + clean:
+### fetch + clean:
 
 ```bash
 # make a backup branch just in case
@@ -47,3 +47,27 @@ git reset --hard origin/main
 # remove untracked files and directories (use -fdx to also remove ignored files)
 git clean -fd
 ```
+
+---
+#### Here’s what happens in your sequence:
+
+```bash
+git branch backup-my-work
+```
+- Creates a new branch **pointing to your current commit**.
+- This is like a bookmark in Git history.
+- It does **not** copy files somewhere; it just saves the commit reference.
+- If you later reset `main`, the `backup-my-work` branch still points to your old commit, so you can switch back to it and recover everything.
+
+```bash
+git switch main
+```
+- Just moves you back to the `main` branch.
+- After you run `git reset --hard origin/main` and `git clean -fd`, your `main` branch matches the remote, but the `backup-my-work` branch still contains all the old changes (even unpushed commits).
+- If you **don’t** push `backup-my-work`, it will only exist in your local machine. If your local repo gets deleted, the backup branch is gone too.
+
+If you want that backup saved on GitHub too, push it explicitly
+```bash
+git push origin backup-my-work
+```
+
