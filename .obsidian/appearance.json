@@ -4,7 +4,7 @@
   "interfaceFontFamily": "Consolas",
   "cssTheme": "",
   "baseFontSizeAction": true,
-  "baseFontSize": 13,
+  "baseFontSize": 12,
   "enabledCssSnippets": [
     "custom-style"
   ],

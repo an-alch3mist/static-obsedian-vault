@@ -27,3 +27,23 @@ git push
 git init at Assets/_/.git/     push to -> SPACE_UTIL repository
 git init at Assets/.git/       push to -> #Name repository
 ```
+
+
+to pull
+
+```bash
+# make a backup branch just in case
+git branch backup-my-work
+
+# switch to the branch you care about (main in your case)
+git switch main
+
+# fetch latest remote refs
+git fetch origin
+
+# force local branch to match remote branch exactly
+git reset --hard origin/main
+
+# remove untracked files and directories (use -fdx to also remove ignored files)
+git clean -fd
+```
