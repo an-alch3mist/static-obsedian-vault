@@ -71,3 +71,16 @@ If you want that backup saved on GitHub too, push it explicitly
 git push origin backup-my-work
 ```
 
+
+
+### Clone into a new folder (keeps the `.git` history) — easiest
+
+`git clone` creates a new Git repository for you (it makes the directory, downloads the commits, and creates the `.git` folder).
+
+```bash
+# clone (creates /path/to/target-folder and a .git inside it)
+git clone https://github.com/an-alch3mist/Loop-2025.git /path/to/target-folder
+
+# shallow clone (only latest commit)
+git clone --depth 1 https://github.com/an-alch3mist/Loop-2025.git /path/to/target-folder
+```
