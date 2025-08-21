@@ -1,7 +1,8 @@
 
 navigate inside folder containing index.html
 
-### the first time:
+# From Scratch
+#### the first time:
 
 ```bash
 git init
@@ -12,7 +13,7 @@ git commit -m "Initial commit: index.html"
 git push -u origin main
 ```
 
-### future update:
+#### future update:
 ```bash
 git add .
 git commit -m "Your commit message here"
@@ -29,7 +30,8 @@ git init at Assets/.git/       push to -> #Name repository
 ```
 
 
-### fetch + clean:
+
+# Fetch + clean previous:
 
 ```bash
 # make a backup branch just in case
@@ -73,14 +75,13 @@ git push origin backup-my-work
 
 
 
-### Clone into a new folder (keeps the `.git` history) — easiest
+# Clone into a new folder (keeps the `.git` history) — easiest
 
 `git clone` creates a new Git repository for you (it makes the directory, downloads the commits, and creates the `.git` folder).
 
 ```bash
-# clone (creates /path/to/target-folder and a .git inside it)
-git clone https://github.com/an-alch3mist/Loop-2025.git /path/to/target-folder
+git clone https://github.com/an-alch3mist/SPACE_UTIL.git .
 
 # shallow clone (only latest commit)
-git clone --depth 1 https://github.com/an-alch3mist/Loop-2025.git /path/to/target-folder
+git clone --depth 1 https://github.com/an-alch3mist/SPACE_UTIL.git /path/to/target-folder
 ```

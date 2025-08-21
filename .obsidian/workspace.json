@@ -68,8 +68,23 @@
               "icon": "lucide-file",
               "title": "How To Unity3D Profiling Analysis"
             }
+          },
+          {
+            "id": "b2e35a1e8a9858fd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2-Guide/How To Git Push Existing File To GitHub.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "How To Git Push Existing File To GitHub"
+            }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -140,7 +155,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 291.5026054382324
+    "width": 200
   },
   "right": {
     "id": "5fbe49f137a42625",
@@ -231,18 +246,19 @@
       "obsidian-tts:Text to Speech": false
     }
   },
-  "active": "192a775657da0b5b",
+  "active": "b2e35a1e8a9858fd",
   "lastOpenFiles": [
     "2-Guide/How To Farmer Was Replaced/How To Unity3D Profiling Analysis.md",
+    "2-Guide/How To Farmer Was Replaced/How To New Functionality similar to conventional python like.md",
+    "2-Guide/How To Farmer Was Replaced/How To GameController Command Types - Detailed Guide.md",
     "2-Guide/How To Farmer Was Replaced/How To Dependency Scripts Graph.md",
+    "2-Guide/How To Git Push Existing File To GitHub.md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced Prompt Improve(ver 1).md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer was Replaced Prompt Just for Change.md",
-    "2-Guide/How To Farmer Was Replaced/How To GameController Command Types - Detailed Guide.md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (Claude 4).md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (Grok 3).md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced Prompt.md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (OpenAi).md",
-    "2-Guide/How To Git Push Existing File To GitHub.md",
     "2-Guide/How To Integrate Ink To Unity.md",
     "1-Ref/Node System/Node Network System Store Type.md",
     "2-Guide/How To Farmer Was Replaced/How To Farmer Was Replaced (Gemini 2.5pro).md",
@@ -260,7 +276,6 @@
     "@export/Node.moveQ().pdf",
     "1-Ref/Decision Making/Decision Making Similar To Papers please.md",
     "1-Ref/Decision Making/Citizen Assembly Gdd.md",
-    "2-Guide/How To .Ink Dialogue Scripting.md",
     "ad-attachment/git push.txt",
     "1-Ref/Decision Making",
     "2-Guide",
