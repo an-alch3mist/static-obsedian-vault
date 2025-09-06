@@ -59,12 +59,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2-Guide/How To Claude/How To Feed File Prompt.md",
+                "file": "2-Guide/How To Claude/CSharp To README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "How To Feed File Prompt"
+              "title": "CSharp To README"
             }
           }
         ],
@@ -155,7 +155,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 541.5086555480957
+    "width": 400.5086555480957
   },
   "right": {
     "id": "5fbe49f137a42625",
@@ -246,10 +246,11 @@
       "obsidian-tts:Text to Speech": false
     }
   },
-  "active": "b2e35a1e8a9858fd",
+  "active": "192a775657da0b5b",
   "lastOpenFiles": [
-    "2-Guide/How To File Structure.md",
     "2-Guide/How To Claude/How To Feed File Prompt.md",
+    "2-Guide/How To Claude/CSharp To README.md",
+    "2-Guide/How To File Structure.md",
     "2-Guide/How To Claude",
     "2-Guide/How To Integrate Stockfish Chess Unity/How To StockfishBridge Usage Guide.md",
     "2-Guide/How To Git Push Existing File To GitHub.md",
@@ -276,7 +277,6 @@
     "2-Guide/How To TextMeshPro Link System Hover.md",
     "1-Ref/Node System/Topological Sorting for Each Cluster.md",
     "2-Guide/How To JavaScript-like String Extensions for CS.md",
-    "2-Guide/How to use Discord Webhook.md",
     "@export/Node.moveQ().pdf",
     "ad-attachment/git push.txt",
     "1-Ref/Decision Making",
