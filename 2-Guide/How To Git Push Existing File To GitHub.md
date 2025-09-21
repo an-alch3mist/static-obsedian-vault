@@ -5,14 +5,19 @@ navigate inside folder containing index.html
 #### the first time:
 
 ```bash
+%% do not forget the .gitignore %%
 git init
-git remote add origin https://github.com/an-alch3mist/Loop-2025.git
+git remote add origin https://github.com/an-alch3mist/Tetrod2D-FallingBlocks-2025.git
 git branch -M main
 git add .
 git commit -m "Initial commit: index.html"
 git push -u origin main
 ```
 
+```.gitignore
+# Ignore Assets/_/_secure directory when push is done via git
+/_secure/
+```
 #### future update:
 ```bash
 git add .

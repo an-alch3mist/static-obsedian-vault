@@ -127,8 +127,8 @@ Exact README structure (follow this order; include all sections, even if short)
   Include a compact table of all public types (in all of root class) 
   strict constraint: make sure you do not leave any public(field/function (static or not-static)) and their major public members(also includes public void or return types) (one line per method/property). 
   **Critical: This includes ALL public members regardless of type:**
-  - Public static fields (e.g., `public static char axisY`)  
-  - Public static properties (e.g., `public static Type Name { get; set; }`)
+  - Public static fields (e.g., `public static char axisY `)  // if public field,  private get/set mention {get; private set;}
+  - Public static properties (e.g., `public static Type Name`) // if public property, mention private get/set
   - Public instance fields (e.g., `public int x, y`)
   - Public instance properties
   - Public static methods  
