@@ -1,6 +1,5 @@
 
 navigate inside folder containing index.html
-
 # From Scratch
 #### the first time:
 
