@@ -6,7 +6,7 @@ navigate inside folder containing index.html
 ```bash
 %% do not forget the .gitignore %%
 git init
-git remote add origin https://github.com/an-alch3mist/Tetrod2D-FallingBlocks-2025.git
+git remote add origin https://github.com/an-alch3mist/TopDownShooter-3D-Game-Alex-.git
 git branch -M main
 git add .
 git commit -m "Initial commit: index.html"
@@ -16,6 +16,13 @@ git push -u origin main
 ```.gitignore
 # Ignore Assets/_/_secure directory when push is done via git
 /_secure/
+
+```
+```cs
+public static class _secure
+{
+	public static string webhook_url = "https://discord.com/api/webhooks/...."
+}
 ```
 #### future update:
 ```bash
