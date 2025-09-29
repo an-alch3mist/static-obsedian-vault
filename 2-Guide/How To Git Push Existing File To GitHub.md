@@ -13,10 +13,9 @@ git commit -m "Initial commit: index.html"
 git push -u origin main
 ```
 
-```.gitignore
+```bash
 # Ignore Assets/_/_secure directory when push is done via git
 /_secure/
-
 ```
 ```cs
 /* /Assets/_secure/_secure.cs */
