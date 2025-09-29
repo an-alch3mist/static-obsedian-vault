@@ -19,6 +19,7 @@ git push -u origin main
 
 ```
 ```cs
+/* /Assets/_secure/_secure.cs */
 public static class _secure
 {
 	public static string webhook_url = "https://discord.com/api/webhooks/...."
