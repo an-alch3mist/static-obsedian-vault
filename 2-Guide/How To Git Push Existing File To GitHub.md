@@ -27,70 +27,32 @@ public static class _secure
 #### future update:
 ```bash
 git add .
-git commit -m "Your commit message here"
+git commit -m "v0.5.2"
 git push
 ```
 
-// todo how to init and pull to other directory ?
-
-# Where to git Init
+// todo how to init and pull to other directory ? -> Done
+### Where to git Init
 #### for each unity project perform git init in following directory:
 ```cs
 git init at Assets/_/.git/     push to -> SPACE_UTIL repository
 git init at Assets/.git/       push to -> #Name repository
 ```
 
-
-
-# Fetch + clean previous:
-
+# Git Pull
+### Hard reset new changes made in other local directory, linked to same remote repository
 ```bash
-# make a backup branch just in case
-git branch backup-my-work
-
-# switch to the branch you care about (main in your case)
-git switch main
-
-# fetch latest remote refs
-git fetch origin
-
-# force local branch to match remote branch exactly
-git reset --hard origin/main
-
-# remove untracked files and directories (use -fdx to also remove ignored files)
-git clean -fd
+git restore .   # resets ALL tracked files in your working directory to the last committed state
+git pull        # fetches and merges the latest changes from origin/main
 ```
 
----
-#### Here’s what happens in your sequence:
+# Git Clone (import the .git remote repository)
 
-```bash
-git branch backup-my-work
-```
-- Creates a new branch **pointing to your current commit**.
-- This is like a bookmark in Git history.
-- It does **not** copy files somewhere; it just saves the commit reference.
-- If you later reset `main`, the `backup-my-work` branch still points to your old commit, so you can switch back to it and recover everything.
-
-```bash
-git switch main
-```
-- Just moves you back to the `main` branch.
-- After you run `git reset --hard origin/main` and `git clean -fd`, your `main` branch matches the remote, but the `backup-my-work` branch still contains all the old changes (even unpushed commits).
-- If you **don’t** push `backup-my-work`, it will only exist in your local machine. If your local repo gets deleted, the backup branch is gone too.
-
-If you want that backup saved on GitHub too, push it explicitly
-```bash
-git push origin backup-my-work
-```
-
-
-
-# Clone into a new folder (keeps the `.git` history) — easiest
+### Clone into a new folder (keeps the `.git` history)
 
 `git clone` creates a new Git repository for you (it makes the directory, downloads the commits, and creates the `.git` folder).
-
 ```bash
+# inside /Assets/_/
 git clone https://github.com/an-alch3mist/SPACE_UTIL.git .
 
 # shallow clone (only latest commit)
