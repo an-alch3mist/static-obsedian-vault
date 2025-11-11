@@ -6,7 +6,7 @@ navigate inside folder containing index.html
 ```bash
 %% do not forget the .gitignore %%
 git init
-git remote add origin https://github.com/an-alch3mist/UTIL-ANALYSE.git
+git remote add origin https://github.com/an-alch3mist/Timeless-2025.git
 git branch -M main
 git add .
 git commit -m "Initial commit: index.html"
