@@ -15,7 +15,7 @@ git push -u origin main
 
 ```bash
 # Ignore Assets/_/_secure directory when push is done via git
-/_Secure/
+**/_Secure/
 ```
 ```cs
 /* /Assets/_secure/_secure.cs */
