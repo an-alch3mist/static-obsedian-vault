@@ -9,7 +9,7 @@ git init
 git remote add origin https://github.com/an-alch3mist/ShopSim-James.git
 git branch -M main
 git add .
-git commit -m "Initial commit: index.html"
+git commit -m "Initial commit: commited-mssg"
 git push -u origin main
 ```
 
