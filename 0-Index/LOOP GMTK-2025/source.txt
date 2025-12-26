@@ -1,0 +1,5 @@
+source: 
+	prompt: https://gemini.google.com/share/continue/431b506936a6
+	response: https://claude.ai/share/62dc9208-7c92-4490-bc9b-2b4634571db3
+
+	promptAnatomy: https://claude.ai/share/cd1cbe10-9e21-47ad-9089-a474ed688757

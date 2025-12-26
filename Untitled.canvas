@@ -1,1 +1,8 @@
-{}
+{
+	"nodes":[
+		{"id":"8355b20d32ce7eff","x":-442,"y":-383,"width":250,"height":60,"type":"text","text":""},
+		{"id":"2ba2a6b3fbcebc53","x":-20,"y":-280,"width":400,"height":312,"type":"file","file":"ad-attachment/Pasted image 20251122204634.png"},
+		{"id":"7e93100067e8ac72","x":-320,"y":-320,"width":400,"height":299,"type":"file","file":"ad-attachment/Pasted image 20251122204823.png"}
+	],
+	"edges":[]
+}
