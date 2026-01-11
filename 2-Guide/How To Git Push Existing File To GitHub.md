@@ -6,7 +6,7 @@ navigate inside folder containing index.html
 ```bash
 %% do not forget the .gitignore %%
 git init
-git remote add origin https://github.com/an-alch3mist/ShopSim-James.git
+git remote add origin https://github.com/an-alch3mist/Loop-2025-NEW-Analyze.git
 git branch -M main
 git add .
 git commit -m "Initial commit: commited-mssg"
