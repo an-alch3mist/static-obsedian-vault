@@ -1,7 +1,12 @@
 
 navigate inside folder containing index.html
 # From Scratch
-#### the first time:
+### setup profile git <-> gitHub
+```
+git config --global user.name "an-alch3mist"
+git config --global user.email "kaeya000@gmail.com"
+```
+#### the first time commit init:
 
 ```bash
 %% do not forget the .gitignore %%
