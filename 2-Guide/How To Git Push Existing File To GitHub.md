@@ -2,7 +2,7 @@
 navigate inside folder containing index.html
 # From Scratch
 ### setup profile git <-> gitHub
-```
+```bash
 git config --global user.name "an-alch3mist"
 git config --global user.email "kaeya000@gmail.com"
 ```
