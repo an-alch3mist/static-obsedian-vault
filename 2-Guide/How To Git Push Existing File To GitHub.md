@@ -11,7 +11,7 @@ git config --global user.email "kaeya000@gmail.com"
 ```bash
 %% do not forget the .gitignore %%
 git init
-git remote add origin https://github.com/an-alch3mist/MineMGL-3D.git
+git remote add origin https://github.com/g54mob/assetsAnalysis.git
 git branch -M main
 git add .
 git commit -m "Initial commit: commited-mssg"
