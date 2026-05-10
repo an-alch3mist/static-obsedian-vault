@@ -11,7 +11,7 @@ git config --global user.email "kaeya000@gmail.com"
 ```bash
 %% do not forget the .gitignore %%
 git init
-git remote add origin https://github.com/g54mob/assetsAnalysis.git
+git remote add origin https://github.com/g54mob/main-source.git
 git branch -M main
 git add .
 git commit -m "Initial commit: commited-mssg"
@@ -62,4 +62,20 @@ git clone https://github.com/an-alch3mist/SPACE_UTIL.git .
 
 # shallow clone (only latest commit)
 git clone --depth 1 https://github.com/an-alch3mist/SPACE_UTIL.git /path/to/target-folder
+```
+
+
+## When GitIgnore was altered
+```bash
+# 1. Remove everything from Git's tracking (local files untouched)
+git rm --cached -r .
+
+# 2. Re-add everything (Git will now respect .gitignore)
+git add .
+
+# 3. Commit the wipe
+git commit -m "Clear remote repo, re-add with gitignore applied"
+
+# 4. Force push to remote
+git push origin main --force
 ```
