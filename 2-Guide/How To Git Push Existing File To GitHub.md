@@ -31,6 +31,10 @@ public static class _Secure
 ```
 #### future update:
 ```bash
+# 1. Remove everything from Git's tracking (local files untouched)
+git rm --cached -r .
+
+# 2. Re-add everything (Git will now respect .gitignore)
 git add .
 git commit -m "v0.5.2 v0.2 commited-mssg"
 git push
@@ -62,20 +66,4 @@ git clone https://github.com/an-alch3mist/SPACE_UTIL.git .
 
 # shallow clone (only latest commit)
 git clone --depth 1 https://github.com/an-alch3mist/SPACE_UTIL.git /path/to/target-folder
-```
-
-
-## When GitIgnore was altered
-```bash
-# 1. Remove everything from Git's tracking (local files untouched)
-git rm --cached -r .
-
-# 2. Re-add everything (Git will now respect .gitignore)
-git add .
-
-# 3. Commit the wipe
-git commit -m "Clear remote repo, re-add with gitignore applied"
-
-# 4. Force push to remote
-git push origin main --force
 ```
