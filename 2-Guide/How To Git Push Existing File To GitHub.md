@@ -11,11 +11,16 @@ git config --global user.email "kaeya000@gmail.com"
 ```bash
 %% do not forget the .gitignore %%
 git init
-git remote add origin https://github.com/g54mob/main-source.git
+git remote add origin https://github.com/an-alch3mist/GMTK-2026.git
 git branch -M main
 git add .
 git commit -m "Initial commit: commited-mssg"
 git push -u origin main
+```
+
+## new remote (if repo name were to alter in future)
+```bash
+git remote set-url origin https://github.com/an-alch3mist/*.git
 ```
 
 ```bash
