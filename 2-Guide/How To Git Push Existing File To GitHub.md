@@ -72,3 +72,15 @@ git clone https://github.com/an-alch3mist/SPACE_UTIL.git .
 # shallow clone (only latest commit)
 git clone --depth 1 https://github.com/an-alch3mist/SPACE_UTIL.git /path/to/target-folder
 ```
+
+## Git Lfs (invidual files over 100mb)
+
+```bash
+git lfs install
+# file format gotta be tracked.
+git lfs track "*.rar"
+git add .gitattributes
+git add .
+git commit -m "commit-mssg"
+git push origin main -v
+```
